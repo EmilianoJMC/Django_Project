@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+  <h2>Logout</h2>
+  <p>Você saiu da sua conta. Até logo!</p>
+  <a href="{% url 'login' %}" class="btn btn-primary">Entrar novamente</a>
+</div>
+{% endblock %} 

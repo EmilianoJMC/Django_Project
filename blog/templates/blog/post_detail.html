@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ post.titulo }} - Meu Blog{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+        <div class="card mb-4">
+            <img src="{{ post.imagem.url }}" class="card-img-top" alt="{{ post.titulo }}">
+            <div class="card-body">
+                <h1 class="card-title">{{ post.titulo }}</h1>
+                <h4 class="card-subtitle mb-2 text-muted">{{ post.subtitulo }}</h4>
+                <div class="mb-3">{{ post.conteudo|safe }}</div>
+                <p class="text-muted">Publicado em {{ post.data_criacao|date:'d/m/Y H:i' }}</p>
+                <a href="{% url 'pages' %}" class="btn btn-secondary">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

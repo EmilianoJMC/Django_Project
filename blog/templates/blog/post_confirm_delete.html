@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Excluir Post - Meu Blog{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Excluir Post</h2>
+                <p>Tem certeza que deseja excluir o post <strong>{{ post.titulo }}</strong>?</p>
+                <form method="post">{% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+                    <a href="{% url 'pages' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

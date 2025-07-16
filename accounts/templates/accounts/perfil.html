@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+  <h2>Meu Perfil</h2>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="card p-4">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        {% if perfil.avatar %}
+          <img src="{{ perfil.avatar.url }}" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+        {% else %}
+          <img src="https://ui-avatars.com/api/?name={{ perfil.user.username }}" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <h4>{{ perfil.user.get_full_name|default:perfil.user.username }}</h4>
+        <p><strong>Email:</strong> {{ perfil.user.email }}</p>
+        <p><strong>Data de nascimento:</strong> {{ perfil.data_nascimento|date:'d/m/Y' }}</p>
+        <p><strong>Biografia:</strong> {{ perfil.biografia|linebreaks }}</p>
+        <a href="{% url 'editar_perfil' %}" class="btn btn-outline-primary btn-sm">Editar Perfil</a>
+        <a href="{% url 'editar_usuario' %}" class="btn btn-outline-secondary btn-sm">Editar Dados</a>
+        <a href="{% url 'password_change' %}" class="btn btn-outline-warning btn-sm">Alterar Senha</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 
